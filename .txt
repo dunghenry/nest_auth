@@ -1,0 +1,6 @@
+{
+  fieldname: 'image',
+  originalname: 'Screenshot (3).png',
+  encoding: '7bit',
+  mimetype: 'image/png'
+}
