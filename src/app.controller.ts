@@ -19,8 +19,14 @@ import { of } from "rxjs";
 export class AppController {
     constructor(private readonly appService: AppService) {}
     @Get()
+    @Get()
     @Render("index.hbs")
     root() {
+        return { title: "Home Page" };
+    }
+    @Get("/image")
+    @Render("image.hbs")
+    image() {
         return { title: "Home Page" };
     }
     @Post("upload")
@@ -28,7 +34,7 @@ export class AppController {
         FileInterceptor("image", {
             storage: diskStorage({
                 destination: function (req, file, cb) {
-                    cb(null, "./uploads");
+                    cb(null, "./src/public/images");
                 },
                 filename: function (req, file, cb) {
                     cb(null, Date.now() + "." + file.mimetype.split("/")[1]);
@@ -37,6 +43,6 @@ export class AppController {
         }),
     )
     uploadFile(@UploadedFile() file: Express.Multer.File) {
-        return of({ imagePath: file.filename });
+        return of({ url: file.filename });
     }
 }

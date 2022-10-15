@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  nest_authentication:
+    container_name: nest_authentication
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 4000:4000
+    env_file: .env
+    volumes:
+      - "./src:/app/src"
+    networks:
+      - trandung
+networks:
+  trandung:
