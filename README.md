@@ -29,3 +29,15 @@ nest g service user
 ```js
 nest g module user
 ```
+
+### Run docker compose
+
+```js
+docker-compose up
+```
+
+### Run and build docker compose
+
+```js
+docker-compose up --build
+```
